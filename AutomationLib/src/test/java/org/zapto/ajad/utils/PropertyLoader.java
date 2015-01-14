@@ -1,6 +1,7 @@
 package org.zapto.ajad.utils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -18,6 +19,9 @@ public class PropertyLoader {
 	
 	//Constant to hold the default properties file / debug properties file
 	private static final String DebugProperties = "/debug.properties";
+	
+	//Constant to hold the default / debug data file
+	private static final String StrDebugData="/debug.data";
 	
 	//Method for loading capabilities
 	public static Capabilities LoadCapabilities() throws IOException {
@@ -84,12 +88,39 @@ public class PropertyLoader {
 		ObjPropertiesProps.load(PropertyLoader.class.getResourceAsStream(StrPropertyFile));
 		return ObjPropertiesProps.getProperty(StrKey);
 	}
+	
+/*	//Method to load dataold
+	public static String LoadData(String StrDataKey) throws IOException{
+		//Get the file to load the data files  from the property file containing the names of the data files (dataindex.property)
+		return LoadData(StrDataKey, System.getProperty("dataindex.properties" ,StrDebugData));
+	}
+	
+	public static String LoadData(String StrDataKey, String ParStrDataIndex)throws IOException{
+		//Strat
+			// 1. Data index file, listed under application property file contains the data file for each page object
+			// 2. Data index file is another property file,
+			// 3. Specific file is fetched by passing the key value which returns the value of full file path of each file with name
+			// 4. This path is returned 
+			// 5. The file ops will then continue the read ops to fetch the values within this data(usually csv) file.
+		
+		//Instantiate a new propeties object
+		Properties ObjPropDataFile = new Properties();
+		
+		//load all the key-value pairs from the DataIndex.properties file
+		 ObjPropDataFile.load(PropertyLoader.class.getResourceAsStream(ParStrDataIndex));
+
+		return ParStrDataIndex;
+		
+	}
+	
+*/
 
 //Test
 public static void main(String args[]) throws IOException{
 	//PropertyLoader ObjPropertyLoader = new PropertyLoader();
 	//String StrPropertyValue = PropertyLoader.LoadProperty("login.url", "application.properties");
-	String StrPropertyValue = PropertyLoader.LoadProperty("login.url");
+	//PropertyLoader.String StrPropertyValue = PropertyLoader.LoadProperty("datalogin.csv");
+	String StrPropertyValue = PropertyLoader.LoadProperty("testResources");
 	//Capabilities ObjCapabilities = PropertyLoader.LoadCapabilities("application.properties");
 	Capabilities ObjCapabilities = PropertyLoader.LoadCapabilities();
 	System.out.println("ObjCapabilityValue - " + ObjCapabilities.getBrowserName());

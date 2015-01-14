@@ -5,6 +5,13 @@
 	<artifactId>webdriver-testng-archetype-1.1.4.3</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
+	
+	<!-- Organization -->
+	<organization>
+		<name>Ajad Systems</name>
+		<url>http://www.univez.org</url>
+	</organization>
+	<name>Automation Lib</name>
 
 	<!--Dependencies -->
 	<dependencies>
@@ -24,6 +31,11 @@
 			<artifactId>webdriver-factory</artifactId>
 			<version>1.1.43</version>
 		</dependency>
+	 <dependency>
+   		    <groupId>org.seleniumhq.selenium</groupId>
+   		     <artifactId>selenium-java</artifactId>
+   		     <version>2.44.0</version>
+    </dependency>
 	</dependencies>
 	<build>
 		<resources>
@@ -121,10 +133,10 @@
 		<profile>
 			<id>localhost</id>
 			<properties>
-				<site.url>http://ajad.zapto.org/HeloPhp/WebDev/index.php</site.url>
-				<home.url>http://ajad.zapto.org/HeloPhp/WebDev/index.php</home.url>
-				<login.url>http://ajad.zapto.org/HeloPhp/WebDev/Login.php</login.url>
-				<userhome.url>http://ajad.zapto.org/HeloPhp/WebDev/UserHome.php</userhome.url>
+				<site.url>http://ajad.zapto.org/HeloPhp/WebDev/Php/index.php</site.url>
+				<home.url>http://ajad.zapto.org/HeloPhp/WebDev/Php/index.php</home.url>
+				<login.url>http://ajad.zapto.org/HeloPhp/WebDev/Php/Login.php</login.url>
+				<userhome.url>http://ajad.zapto.org/HeloPhp/WebDev/Php/UserHome.php</userhome.url>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -164,5 +176,19 @@
 				<grid.url>http://localhost:4444/wd/hub/</grid.url>
 			</properties>
 		</profile>
+		<!-- Data -->
+		<profile>
+			<id>datalogin</id>
+			<properties>			
+				<datalogin.csv>F:\G\Ws\WsGit\AutomationLib\AutomationLib\src\test\resources\datalogin.csv</datalogin.csv>
+				</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
 	</profiles>
+
+	<properties>
+		<TestProperty>TestValue</TestProperty>
+	</properties>
 </project>

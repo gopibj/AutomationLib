@@ -1,16 +1,22 @@
 package org.zapto.ajad.tests;
 
+import java.io.IOException;
+
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
-
 import org.zapto.ajad.pages.HomePage;
 import org.zapto.ajad.pages.LoginPage;
 import org.zapto.ajad.pages.UserHomePage;
 
 public class HomePageTests extends TestNgTestBase{
+	protected HomePageTests() throws IOException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	private HomePage ObjHomePage;
 	private LoginPage ObjLoginPage;
 	private UserHomePage ObjUserHomePage;
@@ -20,6 +26,8 @@ public class HomePageTests extends TestNgTestBase{
 		ObjHomePage = PageFactory.initElements(ObjWebDriver, HomePage.class);
 		ObjLoginPage = PageFactory.initElements(ObjWebDriver, LoginPage.class);
 		ObjUserHomePage = PageFactory.initElements(ObjWebDriver, UserHomePage.class);
+		
+		
 		
 	}
 

@@ -1,6 +1,8 @@
 package org.zapto.ajad.tests;
 
 
+import java.io.IOException;
+
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -11,6 +13,10 @@ import org.zapto.ajad.pages.LoginPage;
 import org.zapto.ajad.pages.UserHomePage;
 public class LoginPageTests extends TestNgTestBase {
 	
+	protected LoginPageTests() throws IOException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	private HomePage ObjHomePage;
 	private LoginPage ObjLoginPage;
 	private UserHomePage ObjUserHomePage;
