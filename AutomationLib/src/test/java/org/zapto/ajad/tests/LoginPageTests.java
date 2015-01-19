@@ -11,6 +11,8 @@ import org.testng.annotations.DataProvider;
 import org.zapto.ajad.pages.HomePage;
 import org.zapto.ajad.pages.LoginPage;
 import org.zapto.ajad.pages.UserHomePage;
+import org.zapto.ajad.utils.FileOps;
+import org.zapto.ajad.utils.StringOps;
 public class LoginPageTests extends TestNgTestBase {
 	
 	protected LoginPageTests() throws IOException {
@@ -78,6 +80,42 @@ public class LoginPageTests extends TestNgTestBase {
 		  };
 		  }
 	
+	
+	@DataProvider
+	public Object[][] DpCsvData() throws IOException{
+		/*
+		 * Get the string from the csv file using FileOps method
+		 * User String Ops method to format this to Arr2d
+		 * 
+		 * @param ParStrDataCsv
+		 * @return Arr2d[][]
+		 *  
+		 */
+		
+		//At the end of the test, this is the expected return to validate
+		//String[][] Arr2dStrExpected={{"a","b"}, {"c","d"}, {"e","f"}};
+		
+		FileOps ObjFileOps = new FileOps();
+		
+		//Get the string from file 
+		StringBuilder ObjStringBuilder = ObjFileOps.ReadFile("datalogin.csv");
+		
+		//The String data 
+		String ParStrCsvData = ObjStringBuilder.toString();
+		System.out.println("ParStrCsvData - " + ParStrCsvData );
+		
+		//Now to format this to 2dArr
+		StringOps ObjStringOps = new StringOps();
+		
+		//Format the string in to 2d Array
+		String[][] Arr2dStrActual = ObjStringOps.FormatCsvDataToArray(ParStrCsvData, ",", 2);
+				
+		//System.out.println("Executing - GetDataFromCsvAsArr2dTest ");
+		//Assert.assertArrayEquals("GetDataFromCsvAsArr2dTest - ok", Arr2dStrExpected, Arr2dStrActual);
+		
+		return Arr2dStrActual;
+	}
+	
 	//Navigational ops Functional
 
 	public void OpsLogin(){
@@ -124,7 +162,7 @@ public class LoginPageTests extends TestNgTestBase {
 		OpsValidateLogin();
 		
 	}
-	@Test(enabled=true, dataProvider="DataProvider")
+	@Test(enabled=true, dataProvider="DpCsvData")
 	public void TestLoginData(String ParStrUserName, String ParStrPassword){
 		OpsLogin(ParStrUserName, ParStrPassword);
 		OpsValidateLogin(ParStrUserName, ParStrPassword);

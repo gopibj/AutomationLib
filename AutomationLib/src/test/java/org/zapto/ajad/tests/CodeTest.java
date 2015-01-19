@@ -4,9 +4,11 @@
 package org.zapto.ajad.tests;
 
 import java.io.IOException;
+
 import org.junit.Assert;
 //import junit.framework.Assert;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.zapto.ajad.utils.FileOps;
 import org.zapto.ajad.utils.StringOps;
@@ -34,7 +36,7 @@ public class CodeTest extends TestNgTestBase{
 	//	Assert.assertEquals("Ok", "TestString", ObjStringBuilder.toString());
 		System.out.println("Executing - ReadFileTest");
 		System.out.println(ObjStringBuilder.toString());
-		Assert.assertEquals("ReadFileTest - Ok", "a,b,c,d,e,f", ObjStringBuilder.toString());
+		Assert.assertEquals("ReadFileTest - Ok", "ajay,ajay,advith,advith,ajad,ajad", ObjStringBuilder.toString());
 		
 	}
 	
@@ -61,7 +63,8 @@ public class CodeTest extends TestNgTestBase{
 		}
 	
 	@Test(enabled=true)
-	public void  GetDataFromCsvAsArr2dTest() throws IOException{
+//	@DataProvider(name="Arr2dStrFromCsv")
+	public String[][]  GetDataFromCsvAsArr2dTest() throws IOException{
 		
 		/*
 		 * Get the string from the csv file using FileOps method
@@ -89,10 +92,11 @@ public class CodeTest extends TestNgTestBase{
 		
 		//Format the string in to 2d Array
 		String[][] Arr2dStrActual = ObjStringOps.FormatCsvDataToArray(ParStrCsvData, ",", 2);
-		
+				
 		System.out.println("Executing - GetDataFromCsvAsArr2dTest ");
 		Assert.assertArrayEquals("GetDataFromCsvAsArr2dTest - ok", Arr2dStrExpected, Arr2dStrActual);
 		
+		return Arr2dStrActual;
 		
 		
 	}
