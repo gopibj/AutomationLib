@@ -17,10 +17,7 @@ import org.zapto.ajad.utils.PropertyLoader;
 
 //To read a file 
 
-/**
- * @author Ajad
- *
- */
+
 /**
  * @author Ajad
  *

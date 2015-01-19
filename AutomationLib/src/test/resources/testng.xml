@@ -2,10 +2,10 @@
 <suite name="Suite" parallel="false">
   <test name="Test">
     <classes>
-       <class name="org.zapto.ajad.tests.TestNgTests"/>
+   <!--     <class name="org.zapto.ajad.tests.TestNgTests"/>
       <class name="org.zapto.ajad.tests.HomePageTests"/> 
-      <class name="org.zapto.ajad.tests.LoginPageTests"/> 
-      <class name="org.zapto.ajad.tests.CodeTest"/>
+      <class name="org.zapto.ajad.tests.LoginPageTests"/> -->
+      <class name="org.zapto.ajad.tests.CodeTest"/>  
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
