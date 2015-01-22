@@ -10,17 +10,17 @@ import org.zapto.ajad.pages.HomePage;
 import org.zapto.ajad.pages.LoginPage;
 import org.zapto.ajad.pages.UserHomePage;
 
+public class HomePage extends Page
+	{
 
-public class HomePage extends Page{
+		@FindBy(how = How.TAG_NAME, using = "h1")
+		@CacheLookup
+		public WebElement header;
 
-	  @FindBy(how = How.TAG_NAME, using = "h1")
-	  @CacheLookup
-	  public WebElement header;
+		public HomePage(WebDriver ParObjWebDriver)
+			{
+				super(ParObjWebDriver);
+				// TODO Auto-generated constructor stub
+			}
 
-	public HomePage(WebDriver ParObjWebDriver) {
-		super(ParObjWebDriver);
-		// TODO Auto-generated constructor stub
 	}
-	
-
-}

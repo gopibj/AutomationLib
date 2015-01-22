@@ -15,76 +15,73 @@ import org.openqa.selenium.WebDriver;
 import ru.stqa.selenium.factory.WebDriverFactory;
 import ru.stqa.selenium.factory.WebDriverFactoryMode;
 
+public class TestNgTestBase extends CommonParams
+	{
 
+		/*
+		 * 
+		 * //The vars to get from the application.properties -> pom.xml
+		 * 
+		 * protected static String StrGridHubUrl; protected static String
+		 * StrBaseUrl; protected static String StrHomeUrl; protected static
+		 * String StrLoginUrl; protected static String StrUserHomeUrl; protected
+		 * static String StrDataCsv; protected static Capabilities
+		 * ObjCapabilities;
+		 * 
+		 * protected WebDriver ObjWebDriver;
+		 */
+		/*
+		 * @BeforeSuite protected void InitTestNgTestBase() throws IOException {
+		 * CommonParams.InitCommonParams();
+		 * 
+		 * // TODO Auto-generated constructor stub }
+		 */
 
+		@BeforeSuite
+		public void beforeSuite() throws IOException
+			{
 
-public class TestNgTestBase extends CommonParams{
+				// Init the vars by fetching them from the
+				// application.properties -> pom.xml
 
-/*
-	
-	//The vars to get from the application.properties ->  pom.xml
-	
-	protected static String StrGridHubUrl;
-	protected static String StrBaseUrl;
-	protected static String StrHomeUrl;
-	protected static String StrLoginUrl;
-	protected static String StrUserHomeUrl;
-	protected static String StrDataCsv;
-	protected static Capabilities ObjCapabilities;
-	
-	protected WebDriver ObjWebDriver;
-	
-*/
-/*@BeforeSuite
-  protected void InitTestNgTestBase() throws IOException {
-	CommonParams.InitCommonParams();
+				// Urls for different pages for navigation
+				StrBaseUrl = PropertyLoader.LoadProperty("site.url");
+				StrHomeUrl = PropertyLoader.LoadProperty("home.url");
+				StrLoginUrl = PropertyLoader.LoadProperty("login.url");
+				StrUserHomeUrl = PropertyLoader.LoadProperty("userhome.url");
 
-		// TODO Auto-generated constructor stub
-	}*/
+				StrTestResources = PropertyLoader.LoadProperty("testResources");
 
-  
-@BeforeSuite
-  public void beforeSuite() throws IOException {
-	
-	  
-	  // Init the vars by fetching them from the application.properties -> pom.xml
-	  
-	  //Urls for different pages for navigation
-	  StrBaseUrl = PropertyLoader.LoadProperty("site.url");
-	  StrHomeUrl = PropertyLoader.LoadProperty("home.url");
-	  StrLoginUrl = PropertyLoader.LoadProperty("login.url");
-	  StrUserHomeUrl = PropertyLoader.LoadProperty("userhome.url");
-	  
-	  StrTestResources = PropertyLoader.LoadProperty("testResources");
-	  
-	  //Load the test data for various tests
-	  StrDataLoginCsv=PropertyLoader.LoadProperty("datalogin.csv");
-	  
-	  //The GridHubUrl
-	  StrGridHubUrl = PropertyLoader.LoadProperty("grid.url");
-	  if ("".equals(StrGridHubUrl)){
-		  StrGridHubUrl=null;
-	  }
-	  
-	  //Loading the Browser capabilities
-	  ObjCapabilities = PropertyLoader.LoadCapabilities();
-	  
-	  //Set the WebDriverFactory setting
-	  WebDriverFactory.setMode(WebDriverFactoryMode.THREADLOCAL_SINGLETON);	  	  	  	  
-  }
-  
+				// Load the test data for various tests
+				StrDataLoginCsv = PropertyLoader.LoadProperty("datalogin.csv");
 
-  @BeforeMethod
-  public void InitWebDriver() {
-	  ObjWebDriver = WebDriverFactory.getDriver(StrGridHubUrl, ObjCapabilities);
-  }
+				// The GridHubUrl
+				StrGridHubUrl = PropertyLoader.LoadProperty("grid.url");
+				if ("".equals(StrGridHubUrl))
+					{
+						StrGridHubUrl = null;
+					}
 
-  @AfterSuite(alwaysRun=true)
-  public void TearDown() {
-	  WebDriverFactory.dismissAll();
-	  
-	  
-  }
-  
+				// Loading the Browser capabilities
+				ObjCapabilities = PropertyLoader.LoadCapabilities();
 
-}
+				// Set the WebDriverFactory setting
+				WebDriverFactory
+						.setMode(WebDriverFactoryMode.THREADLOCAL_SINGLETON);
+			}
+
+		@BeforeMethod
+		public void InitWebDriver()
+			{
+				ObjWebDriver = WebDriverFactory.getDriver(StrGridHubUrl,
+						ObjCapabilities);
+			}
+
+		@AfterSuite(alwaysRun = true)
+		public void TearDown()
+			{
+				WebDriverFactory.dismissAll();
+
+			}
+
+	}
