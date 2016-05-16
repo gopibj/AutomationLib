@@ -2,9 +2,10 @@ Project: AutomationLib
 Purpose: A general Test automation library to support Selenium automation
          Uses TestNg, Selenium, Maven.
 Origin : This is based on the  original Maven archetype - webdriver-testng-artchetype-1.1.14.3
+<br>
 
 
-Project Description:
+<br>Project Description:<br>
 	1. Refer to Maven Pom.xml to know the referenced libraries
 	2. The Selenium Tests are designed on Page Object Design mdoel
 	3. TestNgTestBase is the base test module
