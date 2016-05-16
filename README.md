@@ -8,7 +8,7 @@ Project Description:
 	1. Refer to Maven Pom.xml to know the referenced libraries
 	2. The Selenium Tests are designed on Page Object Design mdoel
 	3. TestNgTestBase is the base test module
-	4. Page.java is the base clase for all the Page Objects
+	4. Page.java is the base class for all the Page Objects
 	5. Package Description
 		1. common -  contains common classes
 		2. pages - contains page objects
